@@ -1,10 +1,13 @@
 import SearchBox from "./SearchBox"
 import Select from "./Select"
 import Countries from "./Countries"
+import useFetch from "./useFetch"
 import { useState,useEffect } from "react"
-function Body({data,setCode}) {
-    let [Dta,setDta]=useState(data)
+function Body({setCode}) {
+  let {loading,error,data}= useFetch('https://restcountries.com/v3.1/all')
+  let [Dta,setDta]=useState(data)
   let [name,setName]=useState('')
+  
   useEffect(()=>{
     setDta(data)
   },[data])

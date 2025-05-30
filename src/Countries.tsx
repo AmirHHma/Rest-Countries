@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
     function handleClick(e){
         let countryCode=e.currentTarget.dataset.code
-        console.log(`the code is${countryCode}`)
         setCode(countryCode)
     }
     
@@ -15,7 +14,8 @@ import { Link } from "react-router-dom";
         {Dta?.map((country,index)=>{
         return(
             <Link key={index} to={`/details?${country.ccn3}`}>
-                <div onClick={e=>handleClick(e)} key={index} data-code={country.ccn3} className="rounded-lg cursor-pointer justify-self-center overflow-hidden bg-White dark:bg-Blue-900 dark:shadow-none dark:text-Grey-50 shadow-round max-sm:w-full sm:w-full">
+                <div onClick={e=>handleClick(e)} key={index} data-code={country.ccn3} className="rounded-lg cursor-pointer justify-self-center overflow-hidden
+                 bg-White dark:bg-Blue-900 dark:shadow-none dark:text-Grey-50 shadow-round max-sm:w-full sm:w-full hover:scale-105 transition">
                 <img className="w-full aspect-video" src={country.flags.png} alt="country" />
                     <div className="p-10">
                         <h2 className="font-bold text-2xl pb-6">{country.name.common}</h2>

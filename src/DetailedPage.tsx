@@ -22,7 +22,7 @@ function DetailedPage({ code }) {
       <section className="px-10 max-sm:px-0 grid ">
         
         <Link
-          to={"/"}
+          to={"/Rest-Countries"}
           className="inline-flex items-center justify-center dark:text-Grey-50 px-10 py-2 pr-11 max-sm:ml-5   mt-14 shadow-sm-round place-self-start"
         >
           <i className="text-2xl">

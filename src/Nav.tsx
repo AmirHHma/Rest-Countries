@@ -4,7 +4,6 @@ import { IoMoonSharp } from "react-icons/io5";
 
 function Nav() {
     let dark=JSON.parse(localStorage.getItem('isDark'))
-    console.log(dark)
     let [isDark,setDark]=useState(dark ?? false)
 
     
