@@ -3,13 +3,13 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import useFetch from "./useFetch";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "./LoadingSpinner";
-
+//@ts-ignore
 function DetailedPage({ code }) {
   let { loading, error, data } = useFetch("https://restcountries.com/v3.1/all");
     let loc=useLocation().search.slice(1)
     let [country,updateCountry]=useState({})
-    useEffect(()=>{
-        let temp=data?.find(dta=>dta.ccn3==loc)
+    useEffect(()=>{//@ts-ignore
+        let temp=data?.find(dta=>dta.ccn3==loc)//@ts-ignore
         updateCountry(temp)
     },[data])
     
@@ -31,25 +31,30 @@ function DetailedPage({ code }) {
           <h5>Back</h5>
         </Link>
         <div className="grid max-sm:grid-cols-1 sm:grid-cols-2 sm:gap-20 xl:gap-10 max-sm:w-11/12 place-self-center mt-20 dark:text-Grey-50">
+          {/* @ts-ignore */}
           <img className="shadow-sm-round dark:shadow-none" src={country?.flags?.svg} alt="" />
           <div className="">
-            <h1 className="text-4xl font-bold ">{country.name?.common}</h1>
+             {/* @ts-ignore */}
+            <h1 className="text-4xl font-bold py-5">{country.name?.common}</h1>
             <div className="max-sm:grid-cols-1 grid sm:grid-cols-2 items-baseline">
               <div >
-                <h6 className="pb-1.5"><span className="font-semibold ">Native Name:</span>{Object.entries(country.name.nativeName).map(([key,value])=>value.official?? value.common)}</h6>
-                <h6 className="pb-1.5"><span className="font-semibold ">Population:</span>{country.population}</h6>
-                <h6 className="pb-1.5"><span className="font-semibold ">Region:</span>{country.region}</h6>
-                <h6 className="pb-1.5"><span className="font-semibold ">Sub Region:</span>{country.subregion}</h6>
+                 {/* @ts-ignore */}
+                
+                 <h6 className="pb-1.5"><span className="font-semibold ">Native Name:</span>{Object.entries(country.name.nativeName).map(([key,value])=>value.official?? value.common)}</h6>
+               
+                {/* @ts-ignore */} <h6 className="pb-1.5"><span className="font-semibold ">Population:</span>{country.population}</h6>
+                 {/* @ts-ignore */}<h6 className="pb-1.5"><span className="font-semibold ">Region:</span>{country.region}</h6>
+                 {/* @ts-ignore<h6 className="pb-1.5"><span className="font-semibold ">Sub Region:</span>{country.subregion}</h6> */}
                 <h6 className="pb-1.5"><span className="font-semibold ">Capital:</span>{country.capital}</h6>
               </div>
-              <div className="pt-8 [&>h6]:pb-1.5 self-baseline">
-                <h6><span className="font-semibold">Top Level Domain:</span>{country.tld}</h6>
-                <h6><span className="font-semibold">Currencies:</span>{Object.keys(country.currencies).map(item=>country.currencies[item].name)}</h6>
+              {/* @ts-ignore */} <div className="pt-8 [&>h6]:pb-1.5 self-baseline">
+                 {/* @ts-ignore */}<h6><span className="font-semibold">Top Level Domain:</span>{country.tld}</h6>
+                 {/* @ts-ignore */}<h6><span className="font-semibold">Currencies:</span>{Object.keys(country.currencies).map(item=>country.currencies[item].name)}</h6>
                 <h6><span className="font-semibold">Languages:</span>{Object.entries(country.languages).map(([key,value])=>value+' ')}</h6>
               </div>
             </div>
             <div className="mt-10">
-                <h6 className="text-xl font-semibold mb-5">Border Countries:</h6>
+                 {/* @ts-ignore */}<h6 className="text-xl font-semibold mb-5">Border Countries:</h6>
                 <div className="flex gap-3 flex-wrap justify-center">{country.borders?.map((border)=><span key={border} className="py-1 dark:shadow-none dark:bg-Blue-900 px-10 rounded-sm shadow-sm-round">{border}</span>)}</div>
             </div>
           </div>

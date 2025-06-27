@@ -1,12 +1,15 @@
-import Nav from "./nav"
-import {  useState } from "react"
+import Nav from "./Nav"
+import {  useEffect, useState } from "react"
 import { Routes,Route } from "react-router-dom"
 import DetailedPage from "./DetailedPage"
 import Body from "./Body"
 
 
 function App() {
-  let [code,setCode]=useState(null)
+  let [code,setCode]=useState<string>('')
+  useEffect(()=>{
+    console.log(code)
+  },[code ])
 
 
   return (

@@ -1,14 +1,41 @@
+import type React from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
 
- function Countries({Dta,setCode}) {
+interface country{
+    ccn3:string;
+    flags:{
+        png:string;
+        svg:string;
+    };
+    name:{
+        common:string;
+        official:string;
+    };
+    population:string;
+    region: string;
+    capital?: string[] | string;
+
+}
+
+interface countriesProps{
+    Dta:country[],
+    setCode:Dispatch<SetStateAction<string>>
+}
 
 
-    function handleClick(e){
-        let countryCode=e.currentTarget.dataset.code
-        setCode(countryCode)
-    }
+ function Countries({Dta,setCode}:countriesProps) {
     
 
+
+    function handleClick(e:React.MouseEvent<HTMLDivElement>){
+        let countryCode=e.currentTarget.dataset.code
+        if(countryCode){
+            setCode(countryCode)
+        }
+    }
+    
+if(Dta?.length==0)return <h1>country was not found</h1>
     return ( 
     <>
         {Dta?.map((country,index)=>{
