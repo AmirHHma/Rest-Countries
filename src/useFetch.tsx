@@ -12,9 +12,8 @@ export default function useFetch<T,>(url: string) {
         let res = await getCountries({
   fields: ["name", "capital",'population','region','tld','currencies','languages','borders','flags','ccn3'],
 });
-console.log(res)
-        
-        setData(res);
+        //@ts-ignore
+        setData(res);  
         console.log()
       } catch (err) {//@ts-ignore
         setError(err.message);

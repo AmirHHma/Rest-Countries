@@ -3,11 +3,25 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import useFetch from "./useFetch";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "./LoadingSpinner";
+interface country{
+    ccn3:string;
+    flags:{
+        png:string;
+        svg:string;
+    };
+    name:{
+        common:string;
+        official:string;
+    };
+    population:string;
+    region: string;
+    capital?: string[] | string;
+  }
 //@ts-ignore
 function DetailedPage({ code }) {
   let { loading, error, data } = useFetch("https://restcountries.com/v3.1/all");
     let loc=useLocation().search.slice(1)
-    let [country,updateCountry]=useState({})
+    let [country,updateCountry]=useState<country>()
     useEffect(()=>{//@ts-ignore
         let temp=data?.find(dta=>dta.ccn3==loc)//@ts-ignore
         updateCountry(temp)
